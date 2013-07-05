@@ -1,0 +1,8 @@
+# ignore bin
+/bin
+
+# ignore target
+/target
+
+# ignore settings
+/.settings
