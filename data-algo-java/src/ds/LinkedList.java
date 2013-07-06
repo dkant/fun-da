@@ -42,20 +42,57 @@ public class LinkedList<T> {
 		this.getLast().next = new Node<T>(null, value);
 	}
 	
-	public void addAfter(Node currentNode,Node newNode){
-		
+	public void addAfter(Node<T> currentNode,Node<T> newNode){
+		newNode.next=currentNode.next;
+		currentNode.next=newNode;
 	}
 	
 	public void removeFirst(){
+		firstNode=firstNode.next;
 		
 	}
 	
 	public void removeLast(){
+		Node<T> currentNode=this.firstNode;
+		while(currentNode.next.next != null)
+			currentNode=currentNode.next;
+		currentNode.next=null;
+		
 		
 	}
 	
-	public void removeAfter(){
+	public void removeAtIndex(int index){
+		Node<T> nodeFollowingIndex=null;
+		Node<T> currentNode=this.firstNode;
+		for(int i=0; i < index && (nodeFollowingIndex = currentNode.next.next) != null; i++ )
+			currentNode=currentNode.next;
+		currentNode.next=nodeFollowingIndex.next;
 		
+		
+	}
+	
+	
+	public void removeFromLast(int n){
+		Node<T> nPointer=movePointerByN(n);
+		Node<T> nthLastNode=firstNode;
+		while(nPointer.next != null){
+			nPointer = nPointer.next;
+			nthLastNode = nthLastNode.next;
+		}
+		nthLastNode.next=nthLastNode.next.next;
+	}
+	
+	private Node<T> movePointerByN(int n) {
+		Node<T> currentNode=this.firstNode;
+		for(int i=0; i<= n && currentNode.next != null ; i ++ )
+			currentNode=currentNode.next;
+		return currentNode;
+		}
+
+	public void removeAfter(Node<T> currentNode){
+		Node<T> obsoleteNode=currentNode.next;
+		currentNode.next=currentNode.next.next;
+		obsoleteNode.next=null;
 	}
 	/* Overridden Methods */
 
