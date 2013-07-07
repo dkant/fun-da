@@ -10,13 +10,13 @@ public class GitTest {
 	
 	public static void main(String[] args) {
 		out("Hello Git!");
-		LinkedList<Integer> integerList=new LinkedList<Integer>();
+		LinkedList integerList=new LinkedList();
 		integerList.add(1).add(2).add(3).add(9);
 		out(integerList.toString());
 		out(integerList.getLast());
-		Node<Integer> interimNode=integerList.getLast();
+		Node interimNode=integerList.getLast();
 		integerList.add(5).add(6).add(8);
-		integerList.addAfter(interimNode, new Node<Integer>(null, 4)); 		out(integerList);
+		integerList.addAfter(interimNode, new Node(null, 4)); 		out(integerList);
 		integerList.removeFirst();		out(integerList);
 		integerList.removeAfter(interimNode); 		out(integerList);
 		integerList.removeFromLast(1); 		out(integerList);
